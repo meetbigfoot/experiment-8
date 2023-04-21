@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color: #00333d;
+  font: 500 100%/1 'DM Sans', -apple-system, Helvetica, sans-serif;
+  margin: 0;
+  text-rendering: geometricPrecision;
+}
+
+.page {
+  padding: 4.5rem 0 3rem;
+}
+
+#header {
+  display: flex;
+  gap: 0.5rem;
+  padding: 12px 1rem;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+}
+.nav-button {
+  align-items: center;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  font-size: 14px;
+  font-weight: 700;
+  gap: 8px;
+  padding: 14px 1rem;
+}
+.nav-button svg {
+  font-size: 20px;
+}
+
+#footer {
+  bottom: 0;
+  display: flex;
+  position: absolute;
+  width: 100vw;
+}
+.nav-tab {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  font-size: 12px;
+  font-weight: 700;
+  gap: 4px;
+  padding: 6px 12px;
+}
+.nav-tab svg {
+  font-size: 20px;
+}
+
+.active {
+  background: #00b39822;
+  color: #00b398;
+}
+.fill {
+  flex: 1;
+}
+
+.page {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+}
+
+#map {
+  height: 100vh;
+  width: 100vw;
+}

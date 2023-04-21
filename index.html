@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Experiment #8</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer crossorigin="anonymous" src="https://kit.fontawesome.com/0bef9420dc.js"></script>
+    <script defer src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></script>
+    <script defer src="https://unpkg.com/dayjs/dayjs.min.js"></script>
+    <script defer src="scripts.js"></script>
+  </head>
+  <body>
+    <div class="page" id="events">Events</div>
+    <div class="page" id="chat">Chat</div>
+    <div id="map">Map</div>
+    <div class="page" id="collect">Collect</div>
+    <div class="page" id="search">Search</div>
+    <div class="page" id="signup">Signup</div>
+    <div class="page" id="profile">Profile</div>
+    <div id="header">
+      <div class="nav-button" data-page="events"><i class="fa-solid fa-clock"></i> Events</div>
+      <div class="nav-button" data-page="chat"><i class="fa-solid fa-comment-alt"></i> Chat</div>
+      <div class="nav-button" data-page="map"><i class="fa-solid fa-map"></i> Map</div>
+      <div class="nav-button" data-page="collect"><i class="fa-solid fa-circle-plus"></i> Collect</div>
+      <div class="fill"></div>
+      <div class="nav-button" data-page="search"><i class="fa-solid fa-search"></i> Search</div>
+      <div class="nav-button" data-page="signup">Sign Up</div>
+      <div class="nav-button" data-page="profile"><i class="fa-solid fa-circle-u"></i> User Account</div>
+    </div>
+    <div id="footer">
+      <div class="nav-tab" data-page="events"><i class="fa-solid fa-clock"></i> Events</div>
+      <div class="nav-tab" data-page="chat"><i class="fa-solid fa-comment-alt"></i> Chat</div>
+      <div class="nav-tab" data-page="map"><i class="fa-solid fa-map"></i> Map</div>
+      <div class="nav-tab" data-page="collect"><i class="fa-solid fa-circle-plus"></i> Collect</div>
+      <div class="nav-tab" data-page="profile"><i class="fa-solid fa-user"></i> Profile</div>
+    </div>
+  </body>
+</html>
