@@ -1,6 +1,8 @@
 const g = document.getElementById.bind(document)
 const q = document.querySelectorAll.bind(document)
 
+dayjs.extend(dayjs_plugin_relativeTime)
+
 fetch('https://api.ipify.org?format=json')
   .then(response => response.json())
   .then(data => {
@@ -24,6 +26,72 @@ const renderMap = coordsArray => {
   map.addControl(new mapboxgl.NavigationControl())
 }
 
+fetch('https://us-central1-samantha-374622.cloudfunctions.net/events', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    city: 'Los Angeles',
+  }),
+})
+  .then(response => response.json())
+  .then(data => {
+    console.log(`Showing ${data.request_params.per_page} of ${data.found} out of ${data.out_of} on page ${data.page}.`)
+    const events = data.hits.map(hit => {
+      // console.log(hit)
+      const { category, data, description, title } = hit.document
+      const { availability, id, images } = JSON.parse(data)
+      // console.log(JSON.parse(data))
+      const { date, open } = availability.periods[0]
+      const when = dayjs(`${date} ${open ? open : '1200'}`, 'YYYY-MM-DD HHmm')
+      return {
+        date: when.format('ddd MMM D @ ha'),
+        fromNow: when.fromNow(),
+        ...{ category, description, id, images, title },
+      }
+    })
+    renderEvents(events)
+  })
+
+const renderEvents = events => {
+  events.forEach(obj => {
+    // console.log(obj)
+    const card = document.createElement('div')
+    card.className = 'card'
+    card.addEventListener('click', e => window.open(`https://meetbigfoot.com/experience/${obj.id}`))
+
+    const img = document.createElement('div')
+    img.className = 'card-img'
+    img.style.backgroundImage = `url(${obj.images[0].url})`
+    card.appendChild(img)
+
+    const info = document.createElement('div')
+    info.className = 'card-info'
+
+    const tag = document.createElement('div')
+    tag.className = 'card-tag'
+    tag.textContent = obj.category
+    info.appendChild(tag)
+
+    const title = document.createElement('h1')
+    title.className = 'card-title'
+    title.textContent = obj.title
+    info.appendChild(title)
+
+    // const location = document.createElement('div')
+    // location.className = 'card-location'
+    // location.textContent = obj.location.split(',')[0]
+    // info.appendChild(location)
+
+    const date = document.createElement('div')
+    date.className = 'card-date'
+    date.textContent = obj.date
+    info.appendChild(date)
+
+    card.appendChild(info)
+    g('cards').appendChild(card)
+  })
+}
+
 q('[data-page]').forEach(button =>
   button.addEventListener('click', e => {
     q('[data-page]').forEach(a => a.classList.remove('active'))
@@ -35,4 +103,4 @@ q('[data-page]').forEach(button =>
     q(`[data-page=${t}]`).forEach(a => a.classList.add('active'))
   }),
 )
-q('.nav-button')[2].click()
+q('.nav-button')[1].click()

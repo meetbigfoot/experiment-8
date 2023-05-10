@@ -62,15 +62,94 @@ body {
   background: #00b39822;
   color: #00b398;
 }
+.center {
+  margin: auto;
+  max-width: 1200px;
+}
 .fill {
   flex: 1;
 }
-
 .page {
   align-items: center;
   display: flex;
   height: 100vh;
   justify-content: center;
+}
+.row {
+  align-items: baseline;
+  display: flex;
+}
+
+#cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem 0;
+  padding: 2rem;
+}
+.card {
+  border-radius: 1rem;
+  box-shadow: 0px 1rem 2rem -1rem #0005;
+  cursor: pointer;
+  flex: 1 1 18rem;
+  height: 24rem;
+  overflow: hidden;
+  position: relative;
+}
+.card:hover .card-info {
+  bottom: -6rem;
+}
+.card-img {
+  /* prettier-ignore */
+  background: transparent url('https://res.cloudinary.com/bigfoot-cdn/image/upload/v1664983669/placeholders/stock_images/beach_bar_1_kiakjq.jpg') no-repeat center / cover;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.card-info {
+  -webkit-backdrop-filter: blur(0.5rem);
+  align-items: flex-start;
+  backdrop-filter: blur(0.5rem);
+  background: #0005;
+  bottom: 0;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  left: 0;
+  padding: 1.5rem;
+  position: absolute;
+  transition: bottom 0.4s cubic-bezier(0.9, 0, 0.1, 1);
+  width: 100%;
+  z-index: 1;
+}
+.card-location {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 700;
+}
+.card-title {
+  font-size: 22px;
+  line-height: 24px;
+}
+.card-tag {
+  background: #fff3;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 4px 8px;
+  text-transform: uppercase;
+}
+.card-date {
+  background: #fffe;
+  border-radius: 4px;
+  color: #00333d;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 0.5rem;
 }
 
 #chat {
