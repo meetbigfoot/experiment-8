@@ -53,8 +53,23 @@ fetch('https://us-central1-samantha-374622.cloudfunctions.net/events', {
   })
 
 const renderEvents = events => {
+  // create containers for all the days
+  events.forEach((obj, i) => {
+    const id = obj.date.split(' ').slice(1, 3).join('-')
+
+    const day = document.createElement('div')
+    day.id = id
+
+    const h2 = document.createElement('h2')
+    h2.textContent = i ? obj.date.split(' ').slice(0, 3).join(' ') : 'today'
+    day.appendChild(h2)
+
+    if (!g(id)) q('#events .center')[0].appendChild(day)
+  })
   events.forEach(obj => {
+    const id = obj.date.split(' ').slice(1, 3).join('-')
     // console.log(obj)
+
     const card = document.createElement('div')
     card.className = 'card'
     card.addEventListener('click', e => window.open(`https://meetbigfoot.com/experience/${obj.id}`))
@@ -88,7 +103,7 @@ const renderEvents = events => {
     info.appendChild(date)
 
     card.appendChild(info)
-    g('cards').appendChild(card)
+    g(id).appendChild(card)
   })
 }
 
